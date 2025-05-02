@@ -1,0 +1,349 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>45 and 56 Method</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #101010, #1e1e1e);
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: #1c1c1c;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 255, 100, 0.5);
+      width: 100%;
+      max-width: 400px;
+    }
+    .title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      padding: 10px;
+      border: 2px solid #00ff88;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .animated-text {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 1rem;
+      height: 24px;
+    }
+    .typewriter {
+      display: inline-block;
+      overflow: hidden;
+      border-right: .15em solid orange;
+      white-space: nowrap;
+      animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: orange; }
+    }
+    .datetime {
+      display: flex;
+      justify-content: space-between;
+      border: 2px solid #00ff88;
+      padding: 8px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      gap: 8px;
+    }
+    .input-group input {
+      width: 20%;
+      padding: 10px;
+      font-size: 1.2rem;
+      text-align: center;
+      border: 2px solid #ffffff;
+      border-radius: 8px;
+      background-color: #2c2c2c;
+      color: #fff;
+      box-shadow: 0 0 6px rgba(0, 255, 100, 0.4);
+      transition: box-shadow 0.3s ease;
+    }
+    .input-group input:focus {
+      outline: none;
+      box-shadow: 0 0 12px rgba(0, 255, 100, 0.7);
+      transform: scale(1.05);
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .buttons button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #00ff88;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .buttons button:hover {
+      background-color: #00cc66;
+    }
+    .results {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .results .box {
+    min-width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+  }
+    .negative {
+      background-color: #ff3b3b;
+      color: #fff;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+      border-top: 1px solid #444;
+      padding-top: 10px;
+    }
+  
+    .looping-text {
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid orange;
+      animation: typing 5s steps(50, end) infinite, blink-caret .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      0% { width: 0 }
+      50% { width: 100% }
+      100% { width: 0 }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+      .title {
+        font-size: 1.4rem;
+      }
+      .input-group input {
+      width: 20%;
+      padding: 10px;
+      font-size: 1.2rem;
+      text-align: center;
+      border: 2px solid #ffffff;
+      border-radius: 8px;
+      background-color: #2c2c2c;
+      color: #fff;
+      box-shadow: 0 0 6px rgba(0, 255, 100, 0.4);
+      transition: box-shadow 0.3s ease;
+    }
+      .buttons button {
+        font-size: 0.9rem;
+        padding: 8px 14px;
+      }
+    }
+
+
+    .animated-text, .datetime, .input-group, .buttons, .results, .footer {
+      margin-bottom: 20px;
+    }
+
+    .results .box {
+    min-width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+  }
+
+    body {
+      opacity: 0;
+      animation: fadeInBody 1.2s ease-in-out forwards;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+
+  .result-wrapper {
+    border: 2px solid #00ff88;
+    padding: 12px;
+    border-radius: 10px;
+    background-color: #1c1c1c;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 255, 100, 0.4);
+  }
+
+  .result-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00ff88;
+    margin-bottom: 10px;
+  }
+
+  .results {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .results .box {
+    min-width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2c2c2c;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+  }
+
+  .results .box.negative {
+    background-color: #ff3b3b !important;
+    color: #fff;
+  }
+
+  .buttons button {
+    padding: 14px 20px;
+    font-size: 1.1rem;
+  }
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="title">45 and 56 Method</div>
+    <div class="animated-text">
+      <div class="looping-text">Enter your winning number below and reveal the result...</div>
+    </div>
+    <div class="datetime">
+      <span id="date"></span>
+      <span id="time"></span>
+    </div>
+    <div class="input-group">
+      <input type="number" maxlength="1" oninput="moveToNext(this, 'num2')" id="num1">
+      <input type="number" maxlength="1" oninput="moveToNext(this, 'num3')" id="num2">
+      <input type="number" maxlength="1" oninput="moveToNext(this, 'num4')" id="num3">
+      <input type="number" maxlength="1" id="num4">
+    </div>
+    <div class="buttons">
+      <button onclick="calculate()">Enter</button>
+      <button onclick="clearInputs()">Clear</button>
+    </div>
+    <div class="result-wrapper">
+  <div class="result-title">Your Predicted Winning Numbers</div>
+  <div class="results">
+      <div id="result1" class="box"></div>
+      <div id="result2" class="box"></div>
+    </div>
+  </div>
+    <div class="footer">Design by : Damith Lasantha</div>
+  </div>  <script>
+    function moveToNext(current, nextId) {
+      if (current.value.length === 1) {
+        document.getElementById(nextId)?.focus();
+      }
+    }
+
+    function clearInputs() {
+      ['num1','num2','num3','num4'].forEach(id => document.getElementById(id).value = '');
+      ['result1','result2'].forEach(id => {
+        let el = document.getElementById(id);
+        el.innerText = '';
+        el.classList.remove('negative');
+      });
+      document.getElementById('num1').focus();
+    }
+
+    
+function calculate() {
+  let n1 = parseInt(document.getElementById('num1').value);
+  let n2 = parseInt(document.getElementById('num2').value);
+  let n3 = parseInt(document.getElementById('num3').value);
+  let n4 = parseInt(document.getElementById('num4').value);
+
+  if (isNaN(n1) || isNaN(n2) || isNaN(n3) || isNaN(n4)) return;
+
+  function reduceToSingleDigit(num) {
+    while (Math.abs(num) > 9) {
+      num = num.toString().split('').reduce((a, b) => a + parseInt(b), 0);
+    }
+    return num;
+  }
+
+  // Apply reduction repeatedly only to the first formula
+  let sum1 = n1 + n2;
+  let reduced1 = reduceToSingleDigit(sum1);
+  let final1 = reduceToSingleDigit(reduced1 - 6);
+
+  // Apply only one-step reduction to the second formula
+  let sum2 = n3 + n4;
+  let final2 = reduceToSingleDigit(sum2 - 8);
+
+  const r1Box = document.getElementById('result1');
+  const r2Box = document.getElementById('result2');
+
+  r1Box.innerText = final1;
+  r2Box.innerText = final2;
+
+  r1Box.classList.toggle('negative', final1 < 0);
+  r2Box.classList.toggle('negative', final2 < 0);
+}
+
+
+function updateDateTime() {
+      const now = new Date();
+      document.getElementById('date').innerText = now.toLocaleDateString();
+      document.getElementById('time').innerText = now.toLocaleTimeString();
+    }
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+  </script></body>
+</html>
